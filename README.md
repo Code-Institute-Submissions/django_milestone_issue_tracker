@@ -22,9 +22,17 @@
 
 ![Wireframe / Site Diagram](static/images/wireframes/Bug_Feature_Stats.png "Bug Feature Stats")
 
+### Feature Request
+
+![Wireframe / Site Diagram](static/images/wireframes/Submit_Feature_Form.png "Feature request")
+
 ### Features
 
 ![Wireframe / Site Diagram](static/images/wireframes/Features.png "Features")
+
+### Bug Report
+
+![Wireframe / Site Diagram](static/images/wireframes/Submit_Bug_Form.png "Bug Report")
 
 ### Bugs
 
