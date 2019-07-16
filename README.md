@@ -51,6 +51,10 @@
 
 ![Wireframe / Site Diagram](static/images/wireframes/Register.png "Register")
 
+### User Profile
+
+![Wireframe / Site Diagram](static/images/wireframes/User_Profile.png "User Profile")
+
 ### Stats
 
 ![Wireframe / Site Diagram](static/images/wireframes/Bug_Feature_Stats.png "Bug Feature Stats")
@@ -63,6 +67,10 @@
 
 ![Wireframe / Site Diagram](static/images/wireframes/Features.png "Features")
 
+### Feature Detail
+
+![Wireframe / Site Diagram](static/images/wireframes/Feature_Detail.png "Feature Detail")
+
 ### Bug Report
 
 ![Wireframe / Site Diagram](static/images/wireframes/Submit_Bug_Form.png "Bug Report")
@@ -70,6 +78,14 @@
 ### Bugs
 
 ![Wireframe / Site Diagram](static/images/wireframes/Bugs.png "Bugs")
+
+### Bug Detail
+
+![Wireframe / Site Diagram](static/images/wireframes/Bug_Detail.png "Bug Detail")
+
+### Ticket Overview
+
+![Wireframe / Site Diagram](static/images/wireframes/Overview.png "Ticket Overview")
 
 ### Cart
 
