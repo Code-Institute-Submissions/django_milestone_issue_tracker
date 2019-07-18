@@ -1,0 +1,17 @@
+{% extends "base.html" %} 
+{% load bootstrap_tags %}
+{% block title %}
+    Found a Bug? Let us know
+{% endblock %}
+{% block content %}
+    
+    <div class="account-card-container">
+        <div class="account-card">
+            <form method="post" action="{% url 'create_bug' %}">
+                {% csrf_token %}
+                {{ form|as_bootstrap }}
+                <button type="submit" class="btn btn-success">Submit Bug Report</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
