@@ -1,0 +1,17 @@
+{% extends "base.html" %} 
+{% load bootstrap_tags %}
+{% block title %}
+    Feature Request
+{% endblock %}
+{% block content %}
+    
+    <div class="account-card-container">
+        <div class="account-card">
+            <form method="post" action="{% url 'create_feature' %}">
+                {% csrf_token %}
+                {{ form|as_bootstrap }}
+                <button type="submit" class="btn btn-success">Submit Feature Request</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
