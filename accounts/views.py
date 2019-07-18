@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib import messages, auth
 from django.core.urlresolvers import reverse
-from .forms import UserLoginForm, UserRegistrationForm
+from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 
@@ -45,10 +45,17 @@ def login(request):
     return render(request, 'login.html', args)
 
 
-@login_required
 def profile(request):
-    """A view that displays the profile page of a logged in user"""
-    return render(request, 'profile.html')
+    """A view that manages the profile form"""
+    if request.method == 'POST':
+        user_profile_form = UserProfileForm(request.POST)
+        if user_profile_form.is_valid():
+            user_profile_form.save()
+    else:
+        user_profile_form = UserProfileForm()
+
+    args = {'user_profile_form': user_profile_form}
+    return render(request, 'profile.html', args)
 
 
 def register(request):

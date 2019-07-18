@@ -1,4 +1,18 @@
 {
+    "build": {
+        "@saveall": true
+    },
+    "format": {
+        "jsbeautify": {
+            "@formatOnSave": false
+        }
+    },
+    "instance": {
+        "@automaticShutdown": "30"
+    },
+    "javascript": {
+        "@use_jsbeautify": true
+    },
     "language": {
         "tern_defs": {
             "json()": {

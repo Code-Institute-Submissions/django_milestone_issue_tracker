@@ -38,3 +38,13 @@ class UserRegistrationForm(UserCreationForm):
             raise ValidationError("Passwords do not match")
 
         return password2
+
+class UserProfileForm(forms.Form):
+    name = forms.CharField()
+    phone = forms.CharField()
+    address1 = forms.CharField()
+    address2 = forms.CharField()
+    postcode = forms.CharField()
+    town = forms.CharField()
+    county = forms.CharField()
+    country = forms.CharField()

@@ -19,6 +19,14 @@ h3 {
 header {
     text-align: center;
 }
+.footer {
+    width: 100vw;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    background-color: #30323d;
+    padding: 10px 0px;
+}
 .navbar {
     min-height: 50px;
     background-image: linear-gradient(#000, #000);
