@@ -5,19 +5,21 @@
 {% block content %}
     <p><a href="{% url 'create_feature' %}">Submit a feature request</a></p>
     {% for feature in features %}
-        <div class="account-card-container">
-            <div class="account-card">
-                <div>
-                    <h3>{{ feature.name }}</h3>
-                    <p>{{ feature.description }}</p>
-                </div>
-                <div>
-                    <p><i class="fa fa-user"></i> Author: {{ feature.author }}</p>
-                    <p><i class="fa fa-thumbs-up"></i> Votes: {{ feature.upvotes }}</p>
-                    <p><i class="fa fa-eye"></i> Views: {{ feature.views }}</p>
-                    <div class="status"><div id="{{feature.status}}"></div><p>Status: {{ feature.get_status_display }}</p></div>
+        <a href="{% url 'feature_detail' feature.id %}">
+            <div class="account-card-container">
+                <div class="account-card">
+                    <div>
+                        <h3>{{ feature.name }}</h3>
+                        <p>{{ feature.description }}</p>
+                    </div>
+                    <div>
+                        <p><i class="fa fa-user"></i> Author: {{ feature.author }}</p>
+                        <p><i class="fa fa-thumbs-up"></i> Votes: {{ feature.upvotes }}</p>
+                        <p><i class="fa fa-eye"></i> Views: {{ feature.views }}</p>
+                        <div class="status"><div id="{{feature.status}}"></div><p>Status: {{ feature.get_status_display }}</p></div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
     {% endfor %}
 {% endblock %}
