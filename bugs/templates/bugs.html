@@ -5,19 +5,21 @@
 {% block content %}
     <p><a href="{% url 'create_bug' %}">Submit a bug report</a></p>
     {% for bug in bugs %}
-        <div class="account-card-container">
-            <div class="account-card">
-                <div>
-                    <h3>{{ bug.name }}</h3>
-                    <p>{{ bug.description }}</p>
-                </div>
-                <div>
-                    <p><i class="fa fa-user"></i> Author: {{ bug.author }}</p>
-                    <p><i class="fa fa-thumbs-up"></i> Votes: {{ bug.upvotes }}</p>
-                    <p><i class="fa fa-eye"></i> Views: {{ bug.views }}</p>
-                    <div class="status"><div id="{{bug.status}}"></div><p>Status: {{ bug.get_status_display }}</p></div>
+        <a href="{% url 'bug_detail' bug.id %}">
+            <div class="account-card-container">
+                <div class="account-card">
+                    <div>
+                        <h3>{{ bug.name }}</h3>
+                        <p>{{ bug.description }}</p>
+                    </div>
+                    <div>
+                        <p><i class="fa fa-user"></i> Author: {{ bug.author }}</p>
+                        <p><i class="fa fa-thumbs-up"></i> Votes: {{ bug.upvotes }}</p>
+                        <p><i class="fa fa-eye"></i> Views: {{ bug.views }}</p>
+                        <div class="status"><div id="{{bug.status}}"></div><p>Status: {{ bug.get_status_display }}</p></div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
     {% endfor %}
 {% endblock %}

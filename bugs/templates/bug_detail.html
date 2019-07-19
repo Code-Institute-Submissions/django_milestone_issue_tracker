@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load bootstrap_tags %}
+{% block title %}
+    Bug Detail
+{% endblock %}
+{% block content %}
+    <div class="account-card-container">
+        <div class="account-card">
+            <div>
+                <h3>{{ bug.name }}</h3>
+                <p>{{ bug.description }}</p>
+            </div>
+            <div>
+                <p><i class="fa fa-user"></i> Author: {{ bug.author }}</p>
+                <p><a href="{% url 'upvote_bug' bug.id %}"><i class="fa fa-thumbs-up"></i></a> Votes: {{ bug.upvotes }}</p>
+                <p><i class="fa fa-eye"></i> Views: {{ bug.views }}</p>
+                <div class="status"><div id="{{bug.status}}"></div><p>Status: {{ bug.get_status_display }}</p></div>
+            </div>
+            <div>
+            <form method="POST" class="form-width">
+                {% csrf_token %}
+                {{comment_form|as_bootstrap}}
+                {% if request.user.is_authenticated %}
+                <button class='btn btn-success' type='submit'>Comment</button>
+                {% else %}
+                <button class='btn btn-success' type='submit' disabled>Comment</button>
+                {% endif %}
+            </form>
+                <h3>Comments</h3>
+                {% for comment in comments %}
+                <p>{{ comment.content }}</p>
+                <p>By {{ comment.author }} on {{ comment.created_date }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
