@@ -70,7 +70,7 @@ def upvote_feature(request, pk):
     if not upvote:
         upvote = UpvoteFeature(upvoted_feature=feature, user_voted_id=request.user.id)
         upvote.save()
-        feature.price = 5.00
+        feature.vote_price = 5.00
         feature.upvotes += 1
         feature.save()
         cart = request.session.get('cart', {})
