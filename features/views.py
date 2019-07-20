@@ -63,15 +63,14 @@ def create_feature(request, pk=None):
     
 @login_required
 def upvote_feature(request, pk):
-    feature = get_object_or_404(Feature, pk=pk)
+    feature = Feature.objects.get(pk=pk)
     user_voted_id = request.user.id
-    upvote = UpvoteFeature.objects.filter(upvoted_feature=feature, user_voted_id=user_voted_id)
+    upvote = UpvoteFeature.objects.filter(feature=feature, user_voted_id=user_voted_id)
     
     if not upvote:
-        upvote = UpvoteFeature(upvoted_feature=feature, user_voted_id=request.user.id)
+        upvote = UpvoteFeature(feature=feature, user_voted_id=request.user.id)
         upvote.save()
         feature.vote_price = 5.00
-        feature.upvotes += 1
         feature.save()
         cart = request.session.get('cart', {})
         id = feature.pk

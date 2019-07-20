@@ -13,9 +13,14 @@
             </div>
             <div>
                 <p><i class="fa fa-user"></i> Author: {{ feature.author }}</p>
-                <p><a href="{% url 'upvote_feature' feature.id %}"><i class="fa fa-thumbs-up"></i></a> Votes: {{ feature.upvotes }}</p>
+                <p><i class="fa fa-thumbs-up"></i> Votes: {{ feature.upvotes }}</p>
                 <p><i class="fa fa-eye"></i> Views: {{ feature.views }}</p>
                 <div class="status"><div id="{{feature.status}}"></div><p>Status: {{ feature.get_status_display }}</p></div>
+                <form method="POST" action="{% url 'add_to_cart' feature.id %}">
+                    {% csrf_token %}
+                    <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
+                    <button class="btn btn-success" type="submit">Add vote to cart</button>
+                </form>
             </div>
             <div>
             <form method="POST" class="form-width">

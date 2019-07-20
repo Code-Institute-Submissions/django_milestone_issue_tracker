@@ -16,6 +16,7 @@
                         <p><i class="fa fa-user"></i> Author: {{ feature.author }}</p>
                         <p><i class="fa fa-thumbs-up"></i> Votes: {{ feature.upvotes }}</p>
                         <p><i class="fa fa-eye"></i> Views: {{ feature.views }}</p>
+                        <p>Vote price: £{{ feature.vote_price }}</p>
                         <div class="status"><div id="{{feature.status}}"></div><p>Status: {{ feature.get_status_display }}</p></div>
                     </div>
                 </div>
