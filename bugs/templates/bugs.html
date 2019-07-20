@@ -2,6 +2,19 @@
 {% block title %}
     Bugs
 {% endblock %}
+
+{% block search %}
+    <div>
+        <form action="{% url 'search_bugs' %}" method="GET">
+            <input type="text" name="q"/>
+            <button type="submit">Search</button>
+        </form>
+        <form action="{% url 'bugs' %}" method="GET">
+            <button type="submit">Reset</button>
+        </form>
+    </div>
+{% endblock search %}
+
 {% block content %}
     <p><a href="{% url 'create_bug' %}">Submit a bug report</a></p>
     {% for bug in bugs %}

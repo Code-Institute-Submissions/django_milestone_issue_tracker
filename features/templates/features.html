@@ -2,6 +2,19 @@
 {% block title %}
     Features
 {% endblock %}
+
+{% block search %}
+    <div>
+        <form action="{% url 'search_features' %}" method="GET">
+            <input type="text" name="q"/>
+            <button type="submit">Search</button>
+        </form>
+        <form action="{% url 'features' %}" method="GET">
+            <button type="submit">Reset</button>
+        </form>
+    </div>
+{% endblock search %}
+
 {% block content %}
     <p><a href="{% url 'create_feature' %}">Submit a feature request</a></p>
     {% for feature in features %}

@@ -51,6 +51,7 @@
         <h1>{% block title %}{% endblock %}</h1>
     </header>
     <div>
+        {% block search %}{% endblock search %}
         {% block content %}{% endblock %}
     </div>
     {% if messages %}
