@@ -2,6 +2,24 @@
 {% block title %}
     Overview
 {% endblock %}
+
 {% block content %}
-    
+        <div class="account-card-container">
+            <table style="width: 100%">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Votes</th>
+                    <th>Status</th>
+                </tr>
+                {% for result in results %}
+                <tr>
+                    <td>{{ result.name }}</td>
+                    <td>{{ result.description }}</td>
+                    <td>{{ result.upvotes }}</td>
+                    <td>{{ result.get_status_display }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
 {% endblock %}
