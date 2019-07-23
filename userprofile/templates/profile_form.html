@@ -2,18 +2,18 @@
 {% load bootstrap_tags %}
 
 {% block title %}
-    Your Profile
+    Update Your Profile
 {% endblock %}
 
 {% block content %}
     <div class="account-card-container">
         <div class="account-card">
-            <form method="post" action="{% url 'profile' %}" class="accountform">
+            <form method="post" action="{% url 'update_profile' %}" class="accountform">
                 <fieldset class="form-group">
                     <legend>Update Your Details</legend>
                     <p>Fill in your details to speed up the checkout process!</p>
                     {% csrf_token %}
-                    {{  user_profile_form | as_bootstrap }}
+                    {{  form | as_bootstrap }}
                     <button type="submit" class="btn btn-primary">Save Details</button>
                 </fieldset>
             </form>

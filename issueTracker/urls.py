@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from accounts import urls as urls_accounts
+from userprofile import urls as urls_userprofile
 from bugs import urls as urls_bugs
 from features import urls as urls_features
 from overview import urls as urls_overview
@@ -29,6 +30,7 @@ urlpatterns = [
     url(r'^$', index, name="index"),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(urls_accounts)),
+    url(r'^profile/', include(urls_userprofile)),
     url(r'^bugs/', include(urls_bugs)),
     url(r'^features/', include(urls_features)),
     url(r'^overview/', include(urls_overview)),
