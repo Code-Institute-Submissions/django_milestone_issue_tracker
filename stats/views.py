@@ -15,7 +15,7 @@ def stats(request):
     return render(request, "stats.html", {"bugs": bugs, "features": features})
 
 def bug_status_stats(request):
-    labels = ["Todo", "Doing", "Done"]
+    labels = ["Todo", "In Progress", "Complete"]
     todo = Bug.objects.filter(status='T').count()
     progress = Bug.objects.filter(status="P").count()
     complete = Bug.objects.filter(status="C").count()
@@ -26,7 +26,7 @@ def bug_status_stats(request):
     return JsonResponse(data)
     
 def feature_status_stats(request):
-    labels = ["Todo", "Doing", "Done"]
+    labels = ["Todo", "In Progress", "Complete"]
     todo = Feature.objects.filter(status='T').count()
     progress = Feature.objects.filter(status="P").count()
     complete = Feature.objects.filter(status="C").count()
@@ -50,7 +50,7 @@ def top_bugs_stats(request):
     bug_names = []
     bug_upvotes = []
     dataset = list(Bug.objects.values('upvotes', 'name').exclude(
-        upvotes=0).order_by('upvotes'))
+        upvotes=0).order_by('-upvotes')[:3])
     for item in dataset:
         bug_names.append(item['name'])
         bug_upvotes.append(item['upvotes'])

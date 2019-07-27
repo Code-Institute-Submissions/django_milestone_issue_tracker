@@ -5,50 +5,220 @@
 {% endblock %}
 
 {% block content %}
-    <div class="account-card-container">
-        <div class="account-card">
-            <div class="col-sm-12 col-md-6 text-center">
-                <p>{{ bugs }}</p>
-                <h3>Total number of bugs </h3>
+    <div class="stats-card-container">
+        <div class="stats-card">
+            <div class="col-sm-12 col-md-6 stats-column">
+                <h3 style="color: white">Total number of bugs: {{ bugs }}</h3>
+                <div id="bug_chart" data-url="{% url 'bug_status_stats' %}"></div>
+                <div id="top_bug_chart" data-url="{% url 'top_bugs_stats' %}"></div>
             </div>
             <div class="col-sm-12 col-md-6 text-center">
-                <p>{{ features }}</p>
-                <h3>Total number of features </h3>
+                <h3 style="color: white">Total number of features: {{ features }}</h3>
+                <div id="feature_chart" data-url="{% url 'feature_status_stats' %}"></div>
+                <div id="top_feature_chart" data-url="{% url 'top_feature_stats' %}"></div>
             </div>
-            <div id="bug_chart"></div>
         </div>
     </div>
 {% endblock %}
 
 {% block js %}
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script>
-        
-        var options = {
-            chart: {
-                width: 380,
-                type: 'pie',
-            },
-            labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-            series: [44, 55, 13, 43, 22],
-            responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 200
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script>
+    // Bug Status pie chart
+        $.ajax({
+          method: "GET",
+          url: $("#bug_chart").attr("data-url"),
+          dataType: 'json',
+          success: function (data) {
+            bug_labels = data.labels
+            count = data.count
+            var options = {
+                chart: {
+                    width: 380,
+                    type: 'pie',
+                },
+                labels: bug_labels,
+                series: count,
+                title: {
+                    text: 'Bug Status',
+                    align: 'left',
+                    style: {
+                      fontSize:  '16px',
+                      color: '#ffffff',
                     },
-                    legend: {
-                        position: 'bottom'
+                },
+                legend: {
+                    labels: {
+                        colors: '#ffffff',
+                    }
+                },
+                responsive: [{
+                    breakpoint: 400,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            show: false
+                        }
+                    }
+                }]
+            }
+            var chart = new ApexCharts(
+                document.querySelector("#bug_chart"),
+                options
+            );
+            chart.render();
+          }
+        })
+    // Feature Status pie chart
+    $.ajax({
+          method: "GET",
+          url: $("#feature_chart").attr("data-url"),
+          dataType: 'json',
+          success: function (data) {
+            feature_labels = data.labels
+            count = data.count
+            var options = {
+                chart: {
+                    width: 380,
+                    type: 'pie',
+                },
+                labels: feature_labels,
+                series: count,
+                title: {
+                    text: 'Feature Status',
+                    align: 'left',
+                    style: {
+                      fontSize:  '16px',
+                      color: '#ffffff',
+                    },
+                },
+                legend: {
+                    labels: {
+                        colors: '#ffffff',
+                    }
+                },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            show: false
+                        }
+                    }
+                }]
+            }
+            var chart = new ApexCharts(
+                document.querySelector("#feature_chart"),
+                options
+            );
+            chart.render();
+          }
+    })
+    // Top bug bar chart
+    $.ajax({
+          method: "GET",
+          url: $("#top_bug_chart").attr("data-url"),
+          dataType: 'json',
+          success: function (data) {
+            bug_labels = data.labels
+            dataset = data.dataset
+            var options = {
+              chart: {
+                type: 'bar'
+              },
+              series: [{
+                name: bug_labels,
+                data: dataset
+              }],
+              xaxis: {
+                categories: bug_labels,
+                labels: {
+                    style: {
+                        colors: '#ffffff',
                     }
                 }
-            }]
-        }
-
-        var chart = new ApexCharts(
-            document.querySelector("#bug_chart"),
-            options
-        );
-
-        chart.render();
+              },
+              yaxis: {
+                  show: false,
+              },
+              title: {
+                    text: 'Top Bugs',
+                    align: 'left',
+                    style: {
+                      fontSize:  '16px',
+                      color: '#ffffff',
+                    },
+                },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                    }
+                }]
+            }
+            var chart = new ApexCharts(
+                document.querySelector("#top_bug_chart"),
+                options
+            );
+            chart.render();
+          }
+    })
+    // Top feature bar chart
+    $.ajax({
+          method: "GET",
+          url: $("#top_feature_chart").attr("data-url"),
+          dataType: 'json',
+          success: function (data) {
+            feature_labels = data.labels
+            dataset = data.dataset
+            var options = {
+              chart: {
+                type: 'bar'
+              },
+              series: [{
+                name: feature_labels,
+                data: dataset
+              }],
+              xaxis: {
+                categories: feature_labels,
+                labels: {
+                    style: {
+                        colors: '#ffffff',
+                    }
+                }
+              },
+              yaxis: {
+                  show: false,
+              },
+              title: {
+                    text: 'Top Features',
+                    align: 'left',
+                    style: {
+                      fontSize:  '16px',
+                      color: '#ffffff',
+                    },
+                },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                    }
+                }]
+            }
+            var chart = new ApexCharts(
+                document.querySelector("#top_feature_chart"),
+                options
+            );
+            chart.render();
+          }
+    })
     </script>
 {% endblock %}

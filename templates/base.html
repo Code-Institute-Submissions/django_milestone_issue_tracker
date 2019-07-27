@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.css">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -67,10 +68,8 @@
         </div>
     </div>
     {% endif %}
-    <div>
         {% block search %}{% endblock search %}
         {% block content %}{% endblock %}
-    </div>
     <footer>
         <div class="footer">
             Charlotte Skinner <i class="fa fa-copyright"></i>
