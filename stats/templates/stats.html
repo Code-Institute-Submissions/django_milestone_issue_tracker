@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% block title %}
+    Statistics
+{% endblock %}
+
+{% block content %}
+    <div class="account-card-container">
+        <div class="account-card">
+            <div class="col-sm-12 col-md-6 text-center">
+                <p>{{ bugs }}</p>
+                <h3>Total number of bugs </h3>
+            </div>
+            <div class="col-sm-12 col-md-6 text-center">
+                <p>{{ features }}</p>
+                <h3>Total number of features </h3>
+            </div>
+            <div id="bug_chart"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        
+        var options = {
+            chart: {
+                width: 380,
+                type: 'pie',
+            },
+            labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+            series: [44, 55, 13, 43, 22],
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        }
+
+        var chart = new ApexCharts(
+            document.querySelector("#bug_chart"),
+            options
+        );
+
+        chart.render();
+    </script>
+{% endblock %}

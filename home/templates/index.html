@@ -5,39 +5,70 @@
 {% endblock %}
 
 {% block content %}
-    <div class="home-card-container">
-        <div class="home-card">
-            <h3>Our Promise</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting 
-            industry. Lorem Ipsum has been the industry's standard dummy text 
-            ever since the 1500s, when an unknown printer took a galley of type 
-            and scrambled it to make a type specimen book.
-            Lorem Ipsum is simply dummy text of the printing and typesetting 
-            industry. Lorem Ipsum has been the industry's standard dummy text 
-            ever since the 1500s, when an unknown printer took a galley of type 
-            and scrambled it to make a type specimen book.</p>
-        </div>
-        <div class="home-card">
-            <h3>Top Bugs</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting 
-            industry. Lorem Ipsum has been the industry's standard dummy text 
-            ever since the 1500s, when an unknown printer took a galley of type 
-            and scrambled it to make a type specimen book.
-            Lorem Ipsum is simply dummy text of the printing and typesetting 
-            industry. Lorem Ipsum has been the industry's standard dummy text 
-            ever since the 1500s, when an unknown printer took a galley of type 
-            and scrambled it to make a type specimen book.</p>
-        </div>
-        <div class="home-card">
-            <h3>Top Features</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting 
-            industry. Lorem Ipsum has been the industry's standard dummy text 
-            ever since the 1500s, when an unknown printer took a galley of type 
-            and scrambled it to make a type specimen book.
-            Lorem Ipsum is simply dummy text of the printing and typesetting 
-            industry. Lorem Ipsum has been the industry's standard dummy text 
-            ever since the 1500s, when an unknown printer took a galley of type 
-            and scrambled it to make a type specimen book.</p>
+    <div class="row">
+        <div class="home">
+            <div class="col-md-4 col-sm-12">
+                <div class="home-card">
+                    <h3>About Us</h3>
+                    <p>Here at Unicorne we pride ourselves on our fast and efficient support service.
+                    On our Support Center, you can let us know about any bugs that you find and 
+                    request new exciting features!</p>
+                    <ul class="info">
+                        <li>
+                            Bugs and features are free to request, so let us know 
+                            how we can improve our service to you.
+                        </li>
+                        <li>
+                            While bugs are free to vote for, we ask for a 
+                            small donation of £5 to upvote features.
+                        </li>
+                        <li>
+                            In return for your donation, we promise to spend 50% of our time 
+                            working on the most upvoted features. 
+                        </li>
+                        <li>
+                            Head over to our overview page to see what we're working on right now!
+                        </li>
+                    </ul>
+                    <a class="btn btn-info" href="{% url 'overview' %}">Overview</a>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="home-card">
+                    <h3>Top Bugs</h3>
+                    <table style="width: 100%">
+                        <tr>
+                            <th>Name</th>
+                            <th>Votes</th>
+                        </tr>
+                        {% for bug in bugs %}
+                        <tr>
+                            <td>{{ bug.name }}</td>
+                            <td>{{ bug.upvotes }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    <a class="btn btn-info" href="{% url 'bugs' %}">All Bugs</a>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="home-card">
+                    <h3>Top Features</h3>
+                    <table style="width: 100%">
+                        <tr>
+                            <th>Name</th>
+                            <th>Votes</th>
+                        </tr>
+                        {% for feature in features %}
+                        <tr>
+                            <td>{{ feature.name }}</td>
+                            <td>{{ feature.upvotes }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    <a class="btn btn-info" href="{% url 'features' %}">All Features</a>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

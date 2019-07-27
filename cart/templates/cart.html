@@ -4,31 +4,35 @@
     Cart
 {% endblock %}
 {% block content %}
-    {% for item in cart_items %}
-        <div class="account-card-container">
-            <div class="account-card">
-                <div>
-                    <h3>{{ item.feature.name }}</h3>
-                    <p>{{ item.feature.description }}</p>
-                </div>
-                <form method="post" action="{% url 'adjust_cart' item.id %}">
-                    {% csrf_token %}
-                    <div>
-                        <label for="exampleInputAmount" class="sr-only">New Qty</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">Qty</div>
-                            <input name="quantity" type="number" min="0" max="999" class="form-control">
-                            <div class="input-group-addon">{{item.quantity}}</div>
+    <p class="cart-header">Review your votes below and head to checkout!</p>
+    <div class="row">
+        {% for item in cart_items %}
+            <div class="col-md-6 col-sm-12">
+                <div class="product-card-container">
+                    <div class="product-card">
+                        <div>
+                            <h3>{{ item.feature.name }}</h3>
+                            <h4>{{ item.feature.description }}</h4>
                         </div>
+                        <form method="post" action="{% url 'adjust_cart' item.id %}">
+                            {% csrf_token %}
+                            <div>
+                                <label for="exampleInputAmount" class="sr-only">New Qty</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">Qty</div>
+                                    <input name="quantity" type="number" min="0" max="999" class="form-control">
+                                    <div class="input-group-addon">{{item.quantity}}</div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-info">Amend</button>
+                        </form>
                     </div>
-                    <button type="submit" class="btn btn-primary">Amend</button>
-                </form>
+                </div>
             </div>
-        </div>
-    {% endfor %}
-    <div class="text-center">
-        <p>Total</p>
-        <p>{{ total }}</p>
+        {% endfor %}
+    </div>
+    <div class="checkout">
+        <h1>Total: £{{ total }}</h1>
         <a href="{% url 'checkout' %}" class="btn btn-success" role="button">Checkout</a>
     </div>
 {% endblock %}

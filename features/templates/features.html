@@ -4,36 +4,44 @@
 {% endblock %}
 
 {% block search %}
-    <div>
-        <form action="{% url 'search_features' %}" method="GET">
-            <input type="text" name="q"/>
-            <button type="submit">Search</button>
+    <div class="search-container">
+        <form class="search" action="{% url 'search_features' %}" method="GET">
+            <input class="search-input" type="text" name="q"/>
+            <button class="btn btn-primary" type="submit">Search</button>
         </form>
-        <form action="{% url 'features' %}" method="GET">
-            <button type="submit">Reset</button>
+        <form class="search" action="{% url 'features' %}" method="GET">
+            <button class="btn btn-danger" type="submit">Reset</button>
         </form>
     </div>
 {% endblock search %}
 
 {% block content %}
-    <p><a href="{% url 'create_feature' %}">Submit a feature request</a></p>
-    {% for feature in features %}
-        <a href="{% url 'feature_detail' feature.id %}">
-            <div class="account-card-container">
-                <div class="account-card">
-                    <div>
-                        <h3>{{ feature.name }}</h3>
-                        <p>{{ feature.description }}</p>
-                    </div>
-                    <div>
-                        <p><i class="fa fa-user"></i> Author: {{ feature.author }}</p>
-                        <p><i class="fa fa-thumbs-up"></i> Votes: {{ feature.upvotes }}</p>
-                        <p><i class="fa fa-eye"></i> Views: {{ feature.views }}</p>
-                        <p>Vote price: £{{ feature.vote_price }}</p>
-                        <div class="status"><div id="{{feature.status}}"></div><p>Status: {{ feature.get_status_display }}</p></div>
+    <div class="action">
+        <div class="text-container">
+            <p class="action-text">Upvote a feature below or add your own!</p>
+        </div>
+        <a class="btn btn-success" href="{% url 'create_feature' %}">Submit a feature request</a>
+    </div>
+    <div class="row">
+        {% for feature in features %}
+            <a href="{% url 'feature_detail' feature.id %}">
+                <div class="col-md-6 col-sm-12">
+                    <div class="product-card-container">
+                        <div class="product-card">
+                            <div class="description-text">
+                                <h3>{{ feature.name }}</h3>
+                                <h4>{{ feature.description }}</h4>
+                            </div>
+                            <div class="product-stats">
+                                <p class="stats"><i class="fa fa-user"></i> Author: {{ feature.author }}</p>
+                                <p class="stats"><i class="fa fa-thumbs-up"></i> Votes: {{ feature.upvotes }}</p>
+                                <p class="stats"><i class="fa fa-eye"></i> Views: {{ feature.views }}</p>
+                                <div class="status"><div id="{{feature.status}}"></div><p class="stats">Status: {{ feature.get_status_display }}</p></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
-    {% endfor %}
+            </a>
+        {% endfor %}
+    </div>
 {% endblock %}
