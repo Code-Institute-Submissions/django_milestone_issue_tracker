@@ -17,14 +17,23 @@
 
 {% block content %}
     <div class="action">
+        {% if user.is_authenticated %}
         <div class="text-container">
-            <p class="action-text">Upvote a feature below or add your own!</p>
+            <p class="action-text">Upvote a bug below or add your own!</p>
         </div>
         <a class="btn btn-success" href="{% url 'create_bug' %}">Submit a bug report</a>
+        {% else %}
+        <div class="text-container">
+            <p class="action-text">Login to view, vote for, or submit a bug report</p>
+        </div>
+        <a class="btn btn-warning" href="{% url 'login' %}">Login</a>
+        {% endif %}
     </div>
     <div class="row">
         {% for bug in bugs %}
+            {% if user.is_authenticated %}
             <a href="{% url 'bug_detail' bug.id %}">
+            {% endif %}
                 <div class="col-md-6 col-sm-12">
                     <div class="product-card-container">
                         <div class="product-card">

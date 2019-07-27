@@ -58,10 +58,6 @@
     <header>
         <h1>{% block title %}{% endblock %}</h1>
     </header>
-    <div>
-        {% block search %}{% endblock search %}
-        {% block content %}{% endblock %}
-    </div>
     {% if messages %}
     <div class="alert alert-success">
         <div class="messages">
@@ -69,6 +65,10 @@
         </div>
     </div>
     {% endif %}
+    <div>
+        {% block search %}{% endblock search %}
+        {% block content %}{% endblock %}
+    </div>
     <footer>
         <div class="footer">
             Charlotte Skinner <i class="fa fa-copyright"></i>
