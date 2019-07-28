@@ -98,3 +98,23 @@
 ### Blog - For users with an account only
 
 ![Wireframe / Site Diagram](static/images/wireframes/Blog.png "Blog")
+
+## Testing
+
+### Coverage
+
+![Coverage](static/images/coverage/accounts_coverage.png "Accounts")
+
+![Coverage](static/images/coverage/bugs_coverage.png "Bugs")
+
+![Coverage](static/images/coverage/cart_coverage.png "Cart")
+
+![Coverage](static/images/coverage/checkout_coverage.png "Checkout")
+
+![Coverage](static/images/coverage/features_coverage.png "Features")
+
+![Coverage](static/images/coverage/home_coverage.png "Home")
+
+![Coverage](static/images/coverage/overview_coverage.png "Overview")
+
+![Coverage](static/images/coverage/stats_coverage.png "Stats")
