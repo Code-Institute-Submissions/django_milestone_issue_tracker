@@ -1,8 +1,18 @@
-# [Full Stack Frameworks Issue Tracker Application](#)
+# [Full Stack Frameworks Issue Tracker Application](https://fullstack-issue-tracker.herokuapp.com/)
 
 [![Build Status](https://travis-ci.org/charlotteskinner90/django_milestone_issue_tracker.svg?branch=master)](https://travis-ci.org/charlotteskinner90/django_milestone_issue_tracker)
 
+I have created this issue tracker for the fictional software company Unicorne for the Full Stack Frameworks module of the Code Institute Full Stack Web Development diploma.
+This application is built using Django, with a Postgres database. Unicorne Support Center allows users to create feature requests, report bugs and
+view the status of the tickets they create. Users are kept up to date with progress with a comments section on each bug/feature detail page.
+Bugs and features can be upvoted by users, and the features with the most number of votes will be implemented.
+While bugs are free to upvote, the company asks for a donation of £5 per upvote. In return, the company promises to spend 50% of their developer time
+working on new exciting features.
+
 ## UX
+
+I gathered UX ideas from looking at Github, and issue tracker designs on [Dribbble](https://dribbble.com/search?q=issue+tracker).
+I used a color scheme generator to come up with a [palette](https://coolors.co/e8c547-30323d-4d5061-5c80bc-cdd1c4) to use on this site
 
 ## User Stories
 
@@ -95,9 +105,39 @@
 
 ![Wireframe / Site Diagram](static/images/wireframes/Checkout.png "Checkout")
 
-### Blog - For users with an account only
+## Features
 
-![Wireframe / Site Diagram](static/images/wireframes/Blog.png "Blog")
+### Existing Features
+### Features to implement
+
+## Technologies Used
+
+- [Django](https://www.djangoproject.com/)
+    - The project uses **Django**, a python framework to provide the core functionality, templating and authentication on the site
+
+- [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+    - HTML used for the **structure** of the page templates
+
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+    - Language used to apply styles to each page for **styling of the components** (e.g. colour schemes, fonts, images)
+    
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+    - Javascript has been used to implement the Stripe payment functionality, as well as initialising the charts on the statistics page
+
+- [Bootstrap](https://getbootstrap.com/docs/3.3/)
+    - I have used Bootstrap throughout the app to implement a responsive UI including navbars, inputs and buttons
+    - Bootstrap forms have been used for login, register, payment and bug/feature request forms.
+
+- [PostgreSQL](https://www.postgresql.org/)
+    - The production build of this app uses the built in Heroku Postgres database, while the local copy uses [SQLite](https://www.sqlite.org/index.html) 
+
+- [Stripe](https://stripe.com/gb)
+    - Stripe is used to process payments from the checkout area.
+
+- [ApexCharts](https://apexcharts.com/)
+    - I chose to use ApexCharts to build the statistics dashboard as this library provides a great, eyecatching UX experience and is simple to implement.
+    - I converted all the data I needed for the graphs into JSON format first, and had this display on a URL. I then made [ajax](https://www.w3schools.com/js/js_ajax_intro.asp) requests
+    - to grab this data from the API's and display them in pie and bar chart form.
 
 ## Testing
 
@@ -118,3 +158,21 @@
 ![Coverage](static/images/coverage/overview_coverage.png "Overview")
 
 ![Coverage](static/images/coverage/stats_coverage.png "Stats")
+
+### Manual Testing
+
+## Bugs
+
+## Deployment
+
+#### Run app locally
+#### Environment variables
+#### Database set up
+#### Deploying to Heroku
+#### Contributing
+
+## Credits
+
+### Content
+### Media
+### Acknowledgements
