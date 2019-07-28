@@ -31,6 +31,7 @@ def bug_detail(request, pk):
             content=request.POST.get('content')
             comment = CommentBug.objects.create(bug=bug, comment_author=request.user, content=content)
             comment.save()
+            messages.success(request, "You have successfully posted a comment")
     else:
         comment_form = BugCommentForm()
 
@@ -73,6 +74,7 @@ def upvote_bug(request, pk):
         upvote.save()
         bug.upvotes += 1
         bug.save()
+        messages.success(request, "Thanks for your vote!")
         return redirect(bug_detail, bug.pk)
     else:
         messages.error(request, 'You have already voted for this!', extra_tags="alert-danger")

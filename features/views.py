@@ -31,6 +31,7 @@ def feature_detail(request, pk):
             content=request.POST.get('content')
             comment = CommentFeature.objects.create(feature=feature, comment_author=request.user, content=content)
             comment.save()
+            messages.success(request, "You have successfully posted a comment")
     else:
         comment_form = FeatureCommentForm()
 
