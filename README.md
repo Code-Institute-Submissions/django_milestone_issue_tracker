@@ -169,23 +169,44 @@ The site uses responsive design, with a grid system for the cards on the bugs an
 
 - [Travis CI](https://travis-ci.org/charlotteskinner90/django_milestone_issue_tracker/builds) for continuous integration - used to build and test the app upon deployment. Displays a badge at the top of the README file.
 
-- [gunicorn](https://gunicorn.org/)
+- [Gunicorn](https://gunicorn.org/)
     - Python WSGI server that runs Django web application code. Used in production deployment to Heroku.
 
 ## Testing
 
-### Coverage
+### Automated Testing
+
+#### Travis CI
+
+I have integrated Travis CI into the build so that the app is tested as it is deployed to production. Any issues with configuration will be picked up here.
+The build details can be viewed [here](https://travis-ci.org/charlotteskinner90/django_milestone_issue_tracker/builds) and there is a badge present on this README file.
+
+#### Coverage
 
 I have used [Coverage](https://coverage.readthedocs.io/en/v4.5.x/) to implement unit tests in Django. 
 I have taken screenshots of the resulting coverage readings, which can be accessed [here](https://github.com/charlotteskinner90/django_milestone_issue_tracker/tree/master/static/images/coverage)
 
 ### Manual Testing
 
-TBC
+- User not logged in:
+    - Only 'Register' and 'Login' options available from the login page
+    - Bug lister, Feature lister and Overview can be accessed from the homepage but bug/feature detail pages cannot be accessed by clicking card.
+    - User can search bugs/features/overview for keywords in name or description.
+
+- User logged in:
+    - Register, Login options no longer available, replaced with Logout.
+    - Bugs, Features, Overview, Stats, and Cart tabs also available in the navigation.
+    - User can click on the Bug/Feature cards to view the bug/feature detail pages.
+    - User can create a bug or feature by filling out the request forms.
+    - User can upvote a bug or a feature.
+    - Upon upvoting a feature, the user is taken through the ecommerce journey of the cart and checkout with Stripe
+    - User can comment on a bug or feature
+    - User can view the statistics page with live updating graphs.
 
 ## Bugs
 
-TBC
+- Currently a UX annoyance for the user is to have to enter their personal details i.e. address whenever they go through the checkout process. I will aim to fix this at some point by
+creating a custom user model which incorporates a user profile that once completed, will prefill the personal details form upon checkout. I had run out of time to complete this before project submission.
 
 ## Deployment
 
