@@ -25,6 +25,7 @@ from cart import urls as urls_cart
 from checkout import urls as urls_checkout
 from searchbugs import urls as urls_search_bugs
 from searchfeatures import urls as urls_search_features
+from searchoverview import urls as urls_search_overview
 from stats import urls as urls_stats
 from accounts.views import index
 
@@ -40,5 +41,6 @@ urlpatterns = [
     url(r'^checkout/', include(urls_checkout)),
     url(r'^search/bugs/', include(urls_search_bugs)),
     url(r'^search/features/', include(urls_search_features)),
+    url(r'^search/overview/', include(urls_search_overview)),
     url(r'^stats/', include(urls_stats)),
 ]
