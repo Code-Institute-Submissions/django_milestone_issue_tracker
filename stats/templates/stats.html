@@ -128,7 +128,10 @@
             dataset = data.dataset
             var options = {
               chart: {
-                type: 'bar'
+                type: 'bar',
+                toolbar: {
+                  show: false
+                }
               },
               series: [{
                 name: bug_labels,
@@ -183,7 +186,10 @@
             dataset = data.dataset
             var options = {
               chart: {
-                type: 'bar'
+                type: 'bar',
+                toolbar: {
+                  show: false
+                }
               },
               tooltip: {
                   enabled: false,
