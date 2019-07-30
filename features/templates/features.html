@@ -39,13 +39,13 @@
                         <div class="product-card">
                             <div class="description-text">
                                 <h3>{{ feature.name }}</h3>
-                                <h4>{{ feature.description }}</h4>
+                                <h4>{{ feature.description|truncatechars:60 }}</h4>
                             </div>
                             <div class="product-stats">
-                                <p class="stats"><i class="fa fa-user"></i> Author: {{ feature.author }}</p>
-                                <p class="stats"><i class="fa fa-thumbs-up"></i> Votes: {{ feature.upvotes }}</p>
-                                <p class="stats"><i class="fa fa-eye"></i> Views: {{ feature.views }}</p>
-                                <div class="status"><div id="{{feature.status}}"></div><p class="stats">Status: {{ feature.get_status_display }}</p></div>
+                                <p class="stats"><i class="fa fa-user"></i>{{ feature.author }}</p>
+                                <p class="stats"><i class="fa fa-thumbs-up"></i>{{ feature.upvotes }}</p>
+                                <p class="stats"><i class="fa fa-eye"></i>{{ feature.views }}</p>
+                                <div class="status"><div id="{{feature.status}}"></div><p class="stats">{{ feature.get_status_display }}</p></div>
                             </div>
                         </div>
                     </div>
