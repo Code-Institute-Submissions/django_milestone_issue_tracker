@@ -281,4 +281,14 @@ th, td {
         padding: 20px 30px;
         text-align: center;
     }
+    .product-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #ffffff;
+        border-radius: 8px;
+        width: 100%;
+        padding: 20px 30px;
+        margin: 10px;
+    }
 }
