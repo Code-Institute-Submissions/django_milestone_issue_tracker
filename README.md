@@ -136,8 +136,7 @@ The site uses responsive design, with a grid system for the cards on the bugs an
 ### Features to implement
 
 - I would like to have made a custom user profile page if I had more time. Upon logging in, the user can fill out a profile area with details including 
-- their address, phone number etc. This data will then be used to prefill the personal details required on the checkout page. This would improve the UX as the user 
-- would not have to re-enter their details with each purchase.
+- their address, phone number etc. This data will then be used to prefill the personal details required on the checkout page. This would improve the UX as the user would not have to re-enter their details with each purchase.
 
 ## Technologies Used
 
