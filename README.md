@@ -187,6 +187,9 @@ I have taken screenshots of the resulting coverage readings, which can be access
 
 ### Manual Testing
 
+I have carried out manual testing on various different browsers including Mozilla Firefox, Google Chrome, Edge, Internet Explorer and Opera. I have also carried out testing on various different screen sizes and devices, to get a feel for how responsive the site was.
+I have also carried out manual testing for the user stories as follows:
+
 - User not logged in:
     - Only 'Register' and 'Login' options available from the login page
     - Bug lister, Feature lister and Overview can be accessed from the homepage but bug/feature detail pages cannot be accessed by clicking card.
