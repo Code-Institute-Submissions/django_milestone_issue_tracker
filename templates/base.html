@@ -58,7 +58,6 @@
             </div>
         </div>
     </nav>
-    {% block search %}{% endblock search %}
     <header>
         <h1>{% block title %}{% endblock %}</h1>
     </header>
@@ -69,6 +68,7 @@
         </div>
     </div>
     {% endif %}
+    {% block search %}{% endblock search %}
     {% block content %}{% endblock %}
     <footer>
         <div class="footer">

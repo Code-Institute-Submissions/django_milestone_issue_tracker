@@ -65,7 +65,7 @@ def top_feature_stats(request):
     feature_names = []
     feature_upvotes = []
     dataset = list(Feature.objects.values('upvotes', 'name').exclude(
-        upvotes=0).order_by('upvotes'))
+        upvotes=0).order_by('upvotes')[:3])
     for item in dataset:
         feature_names.append(item['name'])
         feature_upvotes.append(item['upvotes'])
