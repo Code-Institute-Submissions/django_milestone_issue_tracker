@@ -58,6 +58,7 @@
             </div>
         </div>
     </nav>
+    {% block search %}{% endblock search %}
     <header>
         <h1>{% block title %}{% endblock %}</h1>
     </header>
@@ -68,8 +69,7 @@
         </div>
     </div>
     {% endif %}
-        {% block search %}{% endblock search %}
-        {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
     <footer>
         <div class="footer">
             Charlotte Skinner <i class="fa fa-copyright"></i>

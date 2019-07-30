@@ -15,7 +15,7 @@
             </div>
             <div class="product-stats">
                 <p class="stats"><i class="fa fa-user"></i> {{ bug.author }}</p>
-                <p class="stats"><i class="fa fa-thumbs-up"></i> {{ bug.upvotes }}</p>
+                <p class="stats"><a href="{% url 'upvote_bug' bug.id %}"><i class="fa fa-thumbs-up"></i></a> Votes: {{ bug.upvotes }}</p>
                 <p class="stats"><i class="fa fa-eye"></i> {{ bug.views }}</p>
                 <div class="status"><div id="{{bug.status}}"></div><p class="stats">{{ bug.get_status_display }}</p></div>
             </div>

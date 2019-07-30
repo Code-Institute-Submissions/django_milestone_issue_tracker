@@ -17,7 +17,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from home import urls as urls_home
 from accounts import urls as urls_accounts
-from userprofile import urls as urls_userprofile
 from bugs import urls as urls_bugs
 from features import urls as urls_features
 from overview import urls as urls_overview
@@ -33,7 +32,6 @@ urlpatterns = [
     url(r'^$', include(urls_home)),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(urls_accounts)),
-    url(r'^profile/', include(urls_userprofile)),
     url(r'^bugs/', include(urls_bugs)),
     url(r'^features/', include(urls_features)),
     url(r'^overview/', include(urls_overview)),

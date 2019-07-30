@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 from django.contrib import messages, auth
 from django.core.urlresolvers import reverse
-from .forms import UserLoginForm, UserRegistrationForm
+from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
+from .models import Profile
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -67,3 +69,22 @@ def register(request):
 
     args = {'user_form': user_form}
     return render(request, 'register.html', args)
+    
+@login_required 
+def profile(request):
+    user_profile = User.objects.get(email=request.user.email)
+    return render(request, "profile.html", {"user_profile": user_profile})
+
+@login_required
+def update_profile(request):
+    """A view that manages the profile form"""
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Details successfully updated!")
+            return redirect(profile)
+    else:
+        form = UserProfileForm(instance=request.user.profile)
+    return render(request, 'profile_form.html', {'form': form})
+

@@ -1,36 +1,39 @@
 body {
     font-family: Arial;
     padding-top: 100px;
-    background: linear-gradient(#000, #30323d) fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #F8F8F8;
     display: flex;
     height: 100%;
     flex-direction: column;
     margin-bottom: 80px;
 }
 h1 {
-    color: #ffffff;
+    color: #30323d;
     font-size: 50px;
     font-family: 'Comfortaa', cursive;
 }
 h3 {
-    color: #000;
+    color: #30323d;
     font-family: 'Comfortaa', cursive;
     padding-bottom: 10px;
 }
 h4 {
-    color: #000;
+    color: #30323d;
 }
 header {
     text-align: center;
-    margin-bottom: 48px
+    margin-bottom: 24px
 }
 a {
     text-decoration: none !important;
 }
 i {
     margin-right: 5px;
+}
+.section-photo {
+    height: 1300px;
+    position: absolute;
+    background: url('/static/img/home-cover.jpg');
 }
 .badge, .badge-warning {
     margin-bottom: 0px;
@@ -41,18 +44,17 @@ i {
     text-align: center;
     position: fixed;
     bottom: 0;
-    background-color: #30323d;
+    background-color: #ffffff;
     padding: 10px 0px;
 }
 .navbar {
     min-height: 50px;
-    background-image: linear-gradient(#000, #000);
+    background-image: linear-gradient(#30323d, #30323d);
     border-bottom: none;
 }
 .navbar-brand {
     font-family: 'Comfortaa', cursive;
-    font-size: 28px;
-    line-height: 30px;
+    font-size: 26px;
 }
 .search-container {
     justify-content: flex-end;
@@ -80,6 +82,9 @@ i {
 }
 .home-card {
     background-color: #ffffff;
+    -webkit-box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
+    -moz-box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
+    box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
     border-radius: 8px;
     padding: 10px;
     margin: 10px;
@@ -95,6 +100,9 @@ i {
 }
 .account-card {
     background-color: #ffffff;
+    -webkit-box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
+    -moz-box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
+    box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
     border-radius: 8px;
     width: 70%;
     padding: 20px 30px;
@@ -102,6 +110,9 @@ i {
 }
 .user-card {
     background-color: #ffffff;
+    -webkit-box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
+    -moz-box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
+    box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
     border-radius: 8px;
     width: 70%;
     padding: 20px 30px;
@@ -116,6 +127,9 @@ i {
     flex-direction: row;
     justify-content: space-between;
     background-color: #ffffff;
+    -webkit-box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
+    -moz-box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
+    box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
     border-radius: 8px;
     width: 100%;
     padding: 20px 30px;
@@ -139,6 +153,9 @@ i {
 }
 .detail-card {
     background-color: #ffffff;
+    -webkit-box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
+    -moz-box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
+    box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
     border-radius: 8px;
     width: 100%;
     padding: 20px 30px;
@@ -158,6 +175,8 @@ i {
     margin: 0px 40px 40px 40px;
 }
 .stats-card {
+    background-color: #30323d;
+    border-radius: 8px;
     width: 90%;
     padding: 20px 30px 80px 30px;
     text-align: center;
@@ -171,7 +190,7 @@ i {
     flex-direction: row;
     justify-content: space-between;
 }
-table, th, td {
+table, td {
     border-collapse: collapse;
     border: 1px solid black;
     background-color: #ffffff;
@@ -182,6 +201,10 @@ table, th, td {
 th, td {
     word-wrap: break-word;
     padding: 10px;
+}
+th {
+    background-color: #30323d;
+    color: #ffffff;
 }
 .btn-info {
     margin: 20px 0px;
@@ -194,7 +217,7 @@ th, td {
     margin: 15px 0px;
 }
 .icon-bar {
-    background-color: #fff;
+    background-color: #30323d;
 }
 .status {
     display: flex;
@@ -211,13 +234,13 @@ th, td {
 }
 .action-text {
     font-size: 20px;
-    color: #ffffff;
+    color: #30323d;
     padding-right: 20px;
     text-align: center;
 }
 .cart-header {
     font-size: 20px;
-    color: #ffffff;
+    color: #30323d;
     text-align: center;
     font-family: 'Comfortaa', cursive;
 }
@@ -277,6 +300,9 @@ th, td {
     }
     .account-card {
         background-color: #ffffff;
+        -webkit-box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
+        -moz-box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
+        box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
         border-radius: 8px;
         width: 100%;
         margin: 10px;
@@ -288,6 +314,9 @@ th, td {
         flex-direction: column;
         justify-content: space-between;
         background-color: #ffffff;
+        -webkit-box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
+        -moz-box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
+        box-shadow: 0px 13px 39px -6px rgba(150,142,150,0.6);
         border-radius: 8px;
         width: 100%;
         padding: 20px 30px;
@@ -298,6 +327,6 @@ th, td {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin: 0px 40px 40px 40px;
+        margin: 0px 20px 20px 20px;
     }
 }

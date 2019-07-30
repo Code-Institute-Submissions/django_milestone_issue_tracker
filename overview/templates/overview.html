@@ -4,7 +4,6 @@
 {% endblock %}
 
 {% block search %}
-    <p class="action-text">Search keywords from the name or description of the bug or feature</p>
     <div class="search-container">
         <form class="search" action="{% url 'search_overview' %}" method="GET">
             <input class="search-input" type="text" placeholder="Search" name="q"/>
@@ -17,6 +16,7 @@
 {% endblock search %}
 
 {% block content %}
+        <p class="action-text">Search keywords from the name or description of the bug or feature</p>
         <div class="account-card-container">
             <table style="width: 100%">
                 <tr>

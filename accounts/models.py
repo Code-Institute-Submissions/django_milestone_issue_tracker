@@ -1,10 +1,11 @@
+from django.contrib.auth.models import User
 from django.db import models
-from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
-# Create your models here.
-class UserProfile(models.Model):
+class Profile(models.Model):
     full_name = models.CharField(max_length=254, default='')
-    author = models.OneToOneField(settings.AUTH_USER_MODEL, default='')
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=20, default='')
     address1 = models.CharField(max_length=254, default='')
     address2 = models.CharField(max_length=254, default='')
@@ -14,4 +15,10 @@ class UserProfile(models.Model):
     country = models.CharField(max_length=254, default='')
 
     def __str__(self):
-        return self.full_name
+        return self.user.username
+
+@receiver(post_save, sender=User)
+def create_or_update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()
