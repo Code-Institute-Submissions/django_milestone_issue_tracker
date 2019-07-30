@@ -8,16 +8,16 @@
         <a class="btn btn-info" href="{% url 'bugs' %}">Back to bugs</a>
     </div>
     <div class="detail-card-container">
-        <div class="detail-card">
-            <div>
+        <div class="product-card">
+            <div class="description-text">
                 <h3>{{ bug.name }}</h3>
                 <h4>{{ bug.description }}</h4>
             </div>
             <div class="product-stats">
-                <p class="stats"><i class="fa fa-user"></i> Author: {{ bug.author }}</p>
-                <p class="stats"><a href="{% url 'upvote_bug' bug.id %}"><i class="fa fa-thumbs-up"></i></a> Votes: {{ bug.upvotes }}</p>
-                <p class="stats"><i class="fa fa-eye"></i> Views: {{ bug.views }}</p>
-                <div class="status"><div id="{{bug.status}}"></div><p class="stats">Status: {{ bug.get_status_display }}</p></div>
+                <p class="stats"><i class="fa fa-user"></i> {{ bug.author }}</p>
+                <p class="stats"><i class="fa fa-thumbs-up"></i> {{ bug.upvotes }}</p>
+                <p class="stats"><i class="fa fa-eye"></i> {{ bug.views }}</p>
+                <div class="status"><div id="{{bug.status}}"></div><p class="stats">{{ bug.get_status_display }}</p></div>
             </div>
         </div>
         <div class="detail-card-container">

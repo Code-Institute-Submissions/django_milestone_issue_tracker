@@ -147,6 +147,9 @@ i {
 .comment-form {
     float: left;
 }
+.comment-form-container {
+    margin-top: 10px;
+}
 .stats-card-container {
     display: flex;
     justify-content: center;
@@ -184,6 +187,9 @@ th, td {
 }
 .btn-container {
     margin-left: 50px;
+}
+.add-to-cart-btn {
+    margin: 15px 0px;
 }
 .icon-bar {
     background-color: #fff;
@@ -266,5 +272,13 @@ th, td {
         border-radius: 4px;
         width: 100%;
         margin-bottom: 10px;
+    }
+    .account-card {
+        background-color: #ffffff;
+        border-radius: 8px;
+        width: 100%;
+        margin: 10px;
+        padding: 20px 30px;
+        text-align: center;
     }
 }

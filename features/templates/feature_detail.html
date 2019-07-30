@@ -4,7 +4,9 @@
     Feature Detail
 {% endblock %}
 {% block content %}
-    <a class="btn btn-info" href="{% url 'features' %}">Back to features</a>
+    <div class="btn-container">
+        <a class="btn btn-info" href="{% url 'features' %}">Back to features</a>
+    </div>    
     <div class="account-card-container">
         <div class="account-card">
             <div>
@@ -16,10 +18,12 @@
                 <p><i class="fa fa-thumbs-up"></i> Votes: {{ feature.upvotes }}</p>
                 <p><i class="fa fa-eye"></i> Views: {{ feature.views }}</p>
                 <div class="status"><div id="{{feature.status}}"></div><p>Status: {{ feature.get_status_display }}</p></div>
-                <form method="POST" action="{% url 'add_to_cart' feature.id %}">
+                <form class="comment-form-container" method="POST" action="{% url 'add_to_cart' feature.id %}">
                     {% csrf_token %}
                     <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
-                    <button class="btn btn-success" type="submit">Add vote to cart</button>
+                    <div class="add-to-cart-btn">
+                        <button class="btn btn-success" type="submit">Add vote to cart</button>
+                    </div>
                 </form>
             </div>
             <div>

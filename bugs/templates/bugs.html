@@ -6,7 +6,7 @@
 {% block search %}
     <div class="search-container">
         <form class="search" action="{% url 'search_bugs' %}" method="GET">
-            <input class="search-input" type="text" name="q"/>
+            <input class="search-input" type="text" placeholder="Search" name="q"/>
             <button class="btn btn-primary" type="submit">Search</button>
         </form>
         <form class="search" action="{% url 'bugs' %}" method="GET">
