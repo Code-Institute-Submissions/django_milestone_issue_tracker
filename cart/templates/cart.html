@@ -4,13 +4,17 @@
     Cart
 {% endblock %}
 {% block content %}
-    <p class="cart-header">Review your votes below and head to checkout!</p>
+    {% if cart_items %}
+        <p class="cart-header">Review your votes below and head to checkout!</p>
+    {% else %}
+        <p class="cart-header">No items in your cart at this time!</p>
+    {% endif %}
     <div class="row">
         {% for item in cart_items %}
             <div class="col-md-6 col-sm-12">
                 <div class="product-card-container">
                     <div class="product-card">
-                        <div>
+                        <div class="description-text">
                             <h3>{{ item.feature.name }}</h3>
                             <h4>{{ item.feature.description }}</h4>
                         </div>
@@ -31,8 +35,10 @@
             </div>
         {% endfor %}
     </div>
-    <div class="checkout">
-        <h1>Total: £{{ total }}</h1>
-        <a href="{% url 'checkout' %}" class="btn btn-success" role="button">Checkout</a>
-    </div>
+    {% if cart_items %}
+        <div class="checkout">
+            <h1>Total: £{{ total }}</h1>
+            <a href="{% url 'checkout' %}" class="btn btn-success" role="button">Checkout</a>
+        </div>
+    {% endif %}
 {% endblock %}
