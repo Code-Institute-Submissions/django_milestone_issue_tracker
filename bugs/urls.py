@@ -1,4 +1,4 @@
-from django.conf.urls import url, include
+from django.conf.urls import url
 from .views import bugs, create_bug, bug_detail, upvote_bug
 
 urlpatterns = [

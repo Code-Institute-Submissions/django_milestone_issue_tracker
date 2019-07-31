@@ -1,18 +1,17 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
-from django.contrib import messages, auth
-from django.core.urlresolvers import reverse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from django.template.context_processors import csrf
 from .models import Bug, UpvoteBug, CommentBug
 from .forms import BugForm, BugCommentForm
 
-# Create your views here.
+
 def bugs(request):
     """A view that displays the bugs page"""
     bugs = Bug.objects.all()
     return render(request, "bugs.html", {"bugs": bugs})
-    
+
+
 def bug_detail(request, pk):
     """
     Create a view that returns a single
@@ -28,8 +27,10 @@ def bug_detail(request, pk):
     if request.method == 'POST':
         comment_form = BugCommentForm(request.POST or None)
         if comment_form.is_valid():
-            content=request.POST.get('content')
-            comment = CommentBug.objects.create(bug=bug, comment_author=request.user, content=content)
+            content = request.POST.get('content')
+            comment = CommentBug.objects.create(bug=bug,
+                                                comment_author=request.user,
+                                                content=content)
             comment.save()
             messages.success(request, "You have successfully posted a comment")
     else:
@@ -42,8 +43,9 @@ def bug_detail(request, pk):
     }
 
     return render(request, "bug_detail.html", args)
-    
-@login_required 
+
+
+@login_required
 def create_bug(request, pk=None):
     """
     Create a view that allows us to create
@@ -62,13 +64,15 @@ def create_bug(request, pk=None):
     else:
         form = BugForm(instance=bug)
     return render(request, 'bug_request_form.html', {'form': form})
-    
+
+
 @login_required
 def upvote_bug(request, pk):
     bug = get_object_or_404(Bug, pk=pk)
     user_voted_id = request.user.id
-    upvote = UpvoteBug.objects.filter(upvoted_bug=bug, user_voted_id=user_voted_id)
-    
+    upvote = UpvoteBug.objects.filter(upvoted_bug=bug,
+                                      user_voted_id=user_voted_id)
+
     if not upvote:
         upvote = UpvoteBug(upvoted_bug=bug, user_voted_id=request.user.id)
         upvote.save()
@@ -77,5 +81,6 @@ def upvote_bug(request, pk):
         messages.success(request, "Thanks for your vote!")
         return redirect(bug_detail, bug.pk)
     else:
-        messages.error(request, 'You have already voted for this!', extra_tags="alert-danger")
+        messages.error(request, 'You have already voted for this!',
+                       extra_tags="alert-danger")
         return redirect(bug_detail, bug.pk)

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
+
+
 class Bug(models.Model):
     STATUS = (
             ('T', 'To Do'),
@@ -17,19 +18,22 @@ class Bug(models.Model):
 
     def __str__(self):
         return self.name
-        
+
+
 class UpvoteBug(models.Model):
-    upvoted_bug = models.ForeignKey(Bug, default=None, on_delete=models.CASCADE)
+    upvoted_bug = models.ForeignKey(Bug, default=None,
+                                    on_delete=models.CASCADE)
     user_voted = models.ForeignKey(User, on_delete=models.CASCADE)
-    
+
     def __str__(self):
         return str(self.user)
-        
+
+
 class CommentBug(models.Model):
     bug = models.ForeignKey(Bug, on_delete=models.CASCADE)
     content = models.TextField(max_length=300)
     comment_author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(null=True, auto_now_add=True)
-    
+
     def __str__(self):
         return str(self.user)
