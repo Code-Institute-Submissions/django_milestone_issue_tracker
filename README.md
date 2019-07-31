@@ -176,6 +176,9 @@ The site uses responsive design, with a grid system for the cards on the bugs an
 
 - [Travis CI](https://travis-ci.org/charlotteskinner90/django_milestone_issue_tracker/builds) for continuous integration - used to build and test the app upon deployment. Displays a badge at the top of the README file.
 
+- [Flake8](http://flake8.pycqa.org/en/latest/)
+    - Used to enforce the PEP8 style guide
+
 - [Gunicorn](https://gunicorn.org/)
     - Python WSGI server that runs Django web application code. Used in production deployment to Heroku.
 
