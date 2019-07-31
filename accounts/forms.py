@@ -40,8 +40,9 @@ class UserRegistrationForm(UserCreationForm):
 
         return password2
 
+
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('full_name', 'phone', 'address1', 'address2', 'postcode', 
-        'town', 'county', 'country')
+        fields = ('full_name', 'phone', 'address1', 'address2', 'postcode',
+                  'town', 'county', 'country')

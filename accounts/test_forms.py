@@ -5,13 +5,15 @@ from .forms import UserLoginForm, UserRegistrationForm
 class TestUserAuthForms(TestCase):
 
     def test_login_with_correct_values(self):
-        form = UserLoginForm({'username_or_email': 'test@test.com', 'password': 'test_password'})
+        form = UserLoginForm({'username_or_email': 'test@test.com',
+                              'password': 'test_password'})
         self.assertTrue(form.is_valid())
 
     def test_valid_login_form(self):
         form = UserLoginForm({
             'username_or_email': 'test@test.com',
             'password': 'password'
+
         })
         self.assertTrue(form.is_valid())
 

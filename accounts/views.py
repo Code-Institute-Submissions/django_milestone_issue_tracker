@@ -1,10 +1,8 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib import messages, auth
 from django.core.urlresolvers import reverse
 from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
-from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
-from .models import Profile
 from django.contrib.auth.models import User
 
 
@@ -33,13 +31,14 @@ def login(request):
                 auth.login(request, user)
                 messages.error(request, "You have successfully logged in")
 
-                if request.GET and request.GET['next'] !='':
+                if request.GET and request.GET['next'] != '':
                     next = request.GET['next']
                     return HttpResponseRedirect(next)
                 else:
                     return redirect(reverse('index'))
             else:
-                user_form.add_error(None, "Your username or password are incorrect")
+                user_form.add_error(None,
+                                    "Your username or password are incorrect")
     else:
         user_form = UserLoginForm()
 
@@ -69,17 +68,20 @@ def register(request):
 
     args = {'user_form': user_form}
     return render(request, 'register.html', args)
-    
-@login_required 
+
+
+@login_required
 def profile(request):
     user_profile = User.objects.get(email=request.user.email)
     return render(request, "profile.html", {"user_profile": user_profile})
+
 
 @login_required
 def update_profile(request):
     """A view that manages the profile form"""
     if request.method == 'POST':
-        form = UserProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        form = UserProfileForm(request.POST, request.FILES,
+                               instance=request.user.profile)
         if form.is_valid():
             form.save()
             messages.success(request, "Details successfully updated!")
@@ -89,4 +91,3 @@ def update_profile(request):
     else:
         form = UserProfileForm(instance=request.user.profile)
     return render(request, 'profile_form.html', {'form': form})
-
