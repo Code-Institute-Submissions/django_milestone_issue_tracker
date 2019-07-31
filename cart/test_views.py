@@ -2,14 +2,17 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from features.models import Feature
 
+
 class TestCartViews(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='username', password='password')
+        self.user = User.objects.create_user(username='username',
+                                             password='password')
         self.client.login(username='username', password='password')
 
     @staticmethod
     def create_test_feature(self):
-        feature = Feature(name='Test', description='Test description', author=self.user)
+        feature = Feature(name='Test', description='Test description',
+                          author=self.user)
         feature.save()
         return feature
 
@@ -25,7 +28,8 @@ class TestCartViews(TestCase):
         data = {
             'quantity': 1
         }
-        response = self.client.post('/cart/add/{}/'.format(feature.id), data, follow=True)
+        response = self.client.post('/cart/add/{}/'.format(feature.id), data,
+                                    follow=True)
         self.assertEqual(response.status_code, 200)
 
     # Adjust quantity in cart
@@ -34,9 +38,11 @@ class TestCartViews(TestCase):
         initial_data = {
             'quantity': 1
         }
-        self.client.post('/cart/add/{}/'.format(feature.id), initial_data, follow=True)
+        self.client.post('/cart/add/{}/'.format(feature.id), initial_data,
+                         follow=True)
         data = {
             'quantity': 3
         }
-        response = self.client.post('/cart/adjust/{}/'.format(feature.id), data, follow=True)
+        response = self.client.post('/cart/adjust/{}/'.format(feature.id),
+                                    data, follow=True)
         self.assertEqual(response.status_code, 200)
