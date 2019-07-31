@@ -1,5 +1,5 @@
 from django.test import TestCase
-from django.shortcuts import get_object_or_404
+
 
 class TestOverviewViews(TestCase):
     # Test overview page
