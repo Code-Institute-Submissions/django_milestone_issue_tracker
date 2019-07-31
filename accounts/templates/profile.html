@@ -9,14 +9,14 @@
     <div class="account-card-container">
         <div class="user-card">
             <div>
-                <p>Full name: {{ user_profile.full_name }}</p>
-                <p>Phone: {{ user_profile.phone }}</p>
-                <p>Address 1: {{ user_profile.address1 }}</p>
-                <p>Address 2: {{ user_profile.address2 }}</p>
-                <p>Postcode: {{ user_profile.postcode }}</p>
-                <p>Town: {{ user_profile.town }}</p>
-                <p>County: {{ user_profile.county }}</p>
-                <p>Country: {{ user_profile.country }}</p>
+                <p>Full name: {{ user_profile.profile.full_name }}</p>
+                <p>Phone: {{ user_profile.profile.phone }}</p>
+                <p>Address 1: {{ user_profile.profile.address1 }}</p>
+                <p>Address 2: {{ user_profile.profile.address2 }}</p>
+                <p>Postcode: {{ user_profile.profile.postcode }}</p>
+                <p>Town: {{ user_profile.profile.town }}</p>
+                <p>County: {{ user_profile.profile.county }}</p>
+                <p>Country: {{ user_profile.profile.country }}</p>
                 <p><a href="{% url 'update_profile' %}">Update Your Details</a></p>
             </div>
         </div>

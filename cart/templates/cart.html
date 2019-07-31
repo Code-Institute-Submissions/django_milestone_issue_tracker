@@ -37,7 +37,7 @@
     </div>
     {% if cart_items %}
         <div class="checkout">
-            <h1>Total: £{{ total }}</h1>
+            <p class="cart-header">Total: £{{ total }}</p>
             <a href="{% url 'checkout' %}" class="btn btn-success" role="button">Checkout</a>
         </div>
     {% endif %}
