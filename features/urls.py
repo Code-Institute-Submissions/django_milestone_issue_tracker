@@ -1,4 +1,4 @@
-from django.conf.urls import url, include
+from django.conf.urls import url
 from .views import features, create_feature, feature_detail, upvote_feature
 
 urlpatterns = [
