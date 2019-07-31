@@ -3,8 +3,8 @@
 [![Build Status](https://travis-ci.org/charlotteskinner90/django_milestone_issue_tracker.svg?branch=master)](https://travis-ci.org/charlotteskinner90/django_milestone_issue_tracker)
 
 I have created this issue tracker for the fictional software company Unicorne for the Full Stack Frameworks module of the Code Institute Full Stack Web Development diploma.
-This application is built using Django, with a Postgres database (on production). **Unicorne Support Center** allows users to create feature requests, report bugs and
-view the status of the tickets they create. Users are kept up to date with progress with a comments section on each bug/feature detail page.
+This application is built using Django, with a PostgreSQL database (on production, SQLite in development). **Unicorne Support Center** allows users to create feature requests, report bugs and
+view the status of the tickets they create. Users are kept up to date with progress with a comments section on each bug/feature detail page. The status of the ticket can be updated by admin users in the Django admin dashboard.
 Bugs and features can be upvoted by users, and the features with the most number of votes will be implemented by the developers at Unicorne.
 While bugs are free to upvote, the company asks for a donation of £5 per feature upvote. In return, the company promises to spend 50% of their developer time
 working on new exciting features.
@@ -12,8 +12,8 @@ working on new exciting features.
 ## UX
 
 I gathered UX ideas from looking at Github, and issue tracker designs on [Dribbble](https://dribbble.com/search?q=issue+tracker).
-I decided to stick with a simple colour palette, as most SaaS companies use just two or three colours in their schemes. I used a color scheme generator to come up with a 
-[palette](https://coolors.co/e8c547-30323d-4d5061-5c80bc-cdd1c4) to use on this site. Each of the areas are easily accessible from the navbar, with nested areas clearly signposted with call-to-action buttons.
+I decided to stick with a simple colour palette, as most SaaS companies use just two or three colours in their schemes. I had initially chosen a 'dark theme' colour scheme for the site, however after user testing with colleagues I found that a more muted colour scheme was better for UX.
+Each of the areas are easily accessible from the navbar, with nested areas clearly signposted with call-to-action buttons.The navbar is a block colour separate from the rest of the page, to distinguish itself clearly. I took some inspiration from the [Google Drive](https://www.google.com/drive/) website with the banner image across the top to break up the content.
 The site uses responsive design, with a grid system for the cards on the bugs and feature pages. The responsive design ensures the user can have an optimal experience which ever device they choose to use.
 
 ## User Stories
@@ -126,7 +126,7 @@ The site uses responsive design, with a grid system for the cards on the bugs an
 ### Existing Features
 
 - The site uses Django user authentication to create a user account and allow the user to log in
-- Users can be managed through the admin panel (comes in-built with Django) - go to /admin
+- Users can be managed through the admin panel (comes in-built with Django)
 - Users can add a bug or feature request by filling out the fields in the request forms. The data from this form is then used to construct the bug/feature detail cards.
 - Users can upvote bugs and features. There is a small donation required to upvote features, however the users can vote as many times as they want.
 - Users can navigate through the cart and checkout process to process their feature upvotes using Stripe integration.
@@ -135,8 +135,7 @@ The site uses responsive design, with a grid system for the cards on the bugs an
 
 ### Features to implement
 
-- I would like to have made a custom user profile page if I had more time. Upon logging in, the user can fill out a profile area with details including 
-- their address, phone number etc. This data will then be used to prefill the personal details required on the checkout page. This would improve the UX as the user would not have to re-enter their details with each purchase.
+- I would like to have integrated the user profile data into the checkout form, however I ran out of time! The data from the user profile form would be used to prefill the personal details required on the checkout page. This would improve the UX as the user would not have to re-enter their details with each purchase.
 
 ## Technologies Used
 
@@ -156,15 +155,24 @@ The site uses responsive design, with a grid system for the cards on the bugs an
     - I have used Bootstrap throughout the app to implement a responsive UI including navbars, inputs and buttons
     - Bootstrap forms have been used for login, register, payment and bug/feature request forms.
 
+- [Font Awesome](https://fontawesome.com/)
+    - Font awesome icons are used throughout the detail pages and navigation bar to give a visual cue to the user.
+
+- [AWS](https://aws.amazon.com/s3/)
+    - Used the S3 bucket functionality to store static files such as CSS, JS, font files and images
+
 - [PostgreSQL](https://www.postgresql.org/)
-    - The production build of this app uses the built in Heroku Postgres database, while the local copy uses [SQLite](https://www.sqlite.org/index.html) 
+    - The production build of this app uses the built in Heroku Postgres database, while the development version uses [SQLite](https://www.sqlite.org/index.html) 
 
 - [Stripe](https://stripe.com/gb)
-    - Stripe is used to process payments from the checkout area.
+    - Stripe is used to process payments from the checkout area. This site uses test payments, so the following card details can be used to test payment:
+    - Card no: 4242 4242 4242 4242
+    - CVV: 123
+    - Expiry date: Any date in the future!
 
 - [ApexCharts](https://apexcharts.com/)
     - I chose to use ApexCharts to build the statistics dashboard as this library provides a great, eyecatching UX experience and is simple to implement.
-    - I converted all the data I needed for the graphs into JSON format first, and had this display on a URL. I then made [ajax](https://www.w3schools.com/js/js_ajax_intro.asp) requests to grab this data from the API's and display them in pie and bar chart form.
+    - I converted all the data I needed for the graphs into JSON format first (/stats/views.py), and had this display on a URL. I then made [ajax](https://www.w3schools.com/js/js_ajax_intro.asp) requests to grab this data from the API's and display them in pie and bar chart form.
 
 - [Travis CI](https://travis-ci.org/charlotteskinner90/django_milestone_issue_tracker/builds) for continuous integration - used to build and test the app upon deployment. Displays a badge at the top of the README file.
 
@@ -208,7 +216,7 @@ I have also carried out manual testing for the user stories as follows:
 ## Bugs
 
 - Currently a UX annoyance for the user is to have to enter their personal details i.e. address whenever they go through the checkout process. I will aim to fix this at some point by
-creating a custom user model which incorporates a user profile that once completed, will prefill the personal details form upon checkout. I had run out of time to complete this before project submission.
+initialising the checkout form with the data pulled through from the Profile model. I had run out of time to complete this before project submission.
 
 ## Deployment
 
@@ -264,7 +272,9 @@ I had to set up some environment variables inside Heroku in order for the app to
 ### Content
 
 - In some areas of the design (i.e., use of cards) I took inspiration from various issue trackers on Dribbble(https://dribbble.com/search?q=issue+tracker)
+- The banner image throughout the site was obtained from an [article](https://catalystvetpc.com/chasing-the-engaged-employee-unicorn/) online. I have saved the image as a static asset in the project to avoid issues with a broken link if the article got removed.
 - I used [this](https://howchoo.com/g/yzzkodmzzmj/combine-two-querysets-with-different-models) article as a reference point to work out how to combine two datasets for the overview page.
+- I used two articles by [simpleisbetterthancomplex](https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone) as a reference when extending the Django user model. The second article to integrate this into the admin panel can be found [here](https://simpleisbetterthancomplex.com/tutorial/2016/11/23/how-to-add-user-profile-to-django-admin.html)
 - I referenced the [Django Docs](https://docs.djangoproject.com/en/2.2/topics/testing/advanced/) on how to create a temporary user. This was useful in the unit testing with Coverage, in areas that required user login.
 
 ### Acknowledgements
