@@ -172,7 +172,7 @@ The site uses responsive design, with a grid system for the cards on the bugs an
 
 - [ApexCharts](https://apexcharts.com/)
     - I chose to use ApexCharts to build the statistics dashboard as this library provides a great, eyecatching UX experience and is simple to implement.
-    - I converted all the data I needed for the graphs into JSON format first (/stats/views.py), and had this display on a URL. I then made [ajax](https://www.w3schools.com/js/js_ajax_intro.asp) requests to grab this data from the API's and display them in pie and bar chart form.
+    - I converted all the data I needed for the graphs into JSON format first (/stats/views.py), and had this display in a URL e.g. ```https://fullstack-issue-tracker.herokuapp.com/stats/get_bug_stats/```. I then made [ajax](https://www.w3schools.com/js/js_ajax_intro.asp) requests to grab this data from the API's and display them in pie and bar chart form.
 
 - [Travis CI](https://travis-ci.org/charlotteskinner90/django_milestone_issue_tracker/builds) for continuous integration - used to build and test the app upon deployment. Displays a badge at the top of the README file.
 
@@ -271,7 +271,7 @@ I had to set up some environment variables inside Heroku in order for the app to
 
 ### Content
 
-- In some areas of the design (i.e., use of cards) I took inspiration from various issue trackers on Dribbble(https://dribbble.com/search?q=issue+tracker)
+- In some areas of the design (i.e., use of cards) I took inspiration from various issue trackers on [Dribbble](https://dribbble.com/search?q=issue+tracker)
 - The banner image throughout the site was obtained from an [article](https://catalystvetpc.com/chasing-the-engaged-employee-unicorn/) online. I have saved the image as a static asset in the project to avoid issues with a broken link if the article got removed.
 - I used [this](https://howchoo.com/g/yzzkodmzzmj/combine-two-querysets-with-different-models) article as a reference point to work out how to combine two datasets for the overview page.
 - I used two articles by [simpleisbetterthancomplex](https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone) as a reference when extending the Django user model. The second article to integrate this into the admin panel can be found [here](https://simpleisbetterthancomplex.com/tutorial/2016/11/23/how-to-add-user-profile-to-django-admin.html)
