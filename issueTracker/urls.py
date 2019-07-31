@@ -26,7 +26,6 @@ from searchbugs import urls as urls_search_bugs
 from searchfeatures import urls as urls_search_features
 from searchoverview import urls as urls_search_overview
 from stats import urls as urls_stats
-from accounts.views import index
 
 urlpatterns = [
     url(r'^$', include(urls_home)),

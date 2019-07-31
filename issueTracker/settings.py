@@ -16,7 +16,7 @@ if os.environ.get('C9_HOSTNAME'):
     import env
     development = True
 else:
-    development = False 
+    development = False
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,7 +31,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = development
 
-ALLOWED_HOSTS = ['f0117b30871a46ecb93d1f4e94176d9a.vfs.cloud9.us-east-1.amazonaws.com', 'fullstack-issue-tracker.herokuapp.com']
+ALLOWED_HOSTS = [
+    'f0117b30871a46ecb93d1f4e94176d9a.vfs.cloud9.us-east-1.amazonaws.com',
+    'fullstack-issue-tracker.herokuapp.com'
+    ]
 
 
 # Application definition
@@ -92,7 +95,9 @@ WSGI_APPLICATION = 'issueTracker.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 if 'DATABASE_URL' in os.environ:
-    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL')) }
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
 else:
     print("Database url is not found, default to using sqlite")
     DATABASES = {
