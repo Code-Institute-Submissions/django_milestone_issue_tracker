@@ -6,19 +6,20 @@
 {% endblock %}
 
 {% block content %}
-    <div class="account-card-container">
+    <p class="cart-header">View and update your details below</p>
+    <div class="user-card-container">
         <div class="user-card">
-            <div>
-                <p>Full name: {{ user_profile.profile.full_name }}</p>
-                <p>Phone: {{ user_profile.profile.phone }}</p>
-                <p>Address 1: {{ user_profile.profile.address1 }}</p>
-                <p>Address 2: {{ user_profile.profile.address2 }}</p>
-                <p>Postcode: {{ user_profile.profile.postcode }}</p>
-                <p>Town: {{ user_profile.profile.town }}</p>
-                <p>County: {{ user_profile.profile.county }}</p>
-                <p>Country: {{ user_profile.profile.country }}</p>
-                <p><a href="{% url 'update_profile' %}">Update Your Details</a></p>
+            <div class="user-info">
+                <p><strong>Full name: </strong> {{ user_profile.profile.full_name }}</p>
+                <p><strong>Phone: </strong> {{ user_profile.profile.phone }}</p>
+                <p><strong>Address 1: </strong> {{ user_profile.profile.address1 }}</p>
+                <p><strong>Address 2: </strong> {{ user_profile.profile.address2 }}</p>
+                <p><strong>Postcode: </strong> {{ user_profile.profile.postcode }}</p>
+                <p><strong>Town: </strong> {{ user_profile.profile.town }}</p>
+                <p><strong>County: </strong> {{ user_profile.profile.county }}</p>
+                <p><strong>Country: </strong> {{ user_profile.profile.country }}</p>
             </div>
+            <a class="btn btn-info" href="{% url 'update_profile' %}">Update Your Details</a>
         </div>
     </div>
 {% endblock %}

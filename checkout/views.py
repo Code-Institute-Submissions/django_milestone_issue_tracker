@@ -6,6 +6,8 @@ from .models import OrderLineItem
 from django.conf import settings
 from django.utils import timezone
 from features.models import Feature
+from django.contrib.auth.models import User
+
 import stripe
 
 # Create your views here.
@@ -14,6 +16,7 @@ stripe.api_key = settings.STRIPE_SECRET
 
 @login_required()
 def checkout(request):
+    user = User.objects.get(email=request.user.email)
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
