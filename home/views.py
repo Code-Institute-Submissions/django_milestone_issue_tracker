@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from bugs.models import Bug
 from features.models import Feature
-from itertools import chain
 
-# Create your views here.
+
 def index(request):
     """A view that displays the index page"""
     bugs = Bug.objects.order_by('-upvotes')[:5]

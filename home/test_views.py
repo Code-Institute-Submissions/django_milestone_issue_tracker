@@ -1,5 +1,5 @@
 from django.test import TestCase
-from django.shortcuts import get_object_or_404
+
 
 class TestViews(TestCase):
     def test_get_home_page(self):
